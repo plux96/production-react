@@ -9,20 +9,16 @@ import { useTheme } from "./providers/ThemeProvider/lib/useTheme";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AboutPage } from "pages/AboutPage";
 import { MainPage } from "pages/MainPage";
+import { AppRouter } from "./providers/router";
 
 export default function App() {
   const { theme, toggleTheme } = useTheme();
   return (
     <div className={classNames("app", {}, [theme])}>
-      <button onClick={toggleTheme}>Change Theme</button>
+      <button onClick={toggleTheme}>Change T heme</button>
       <Link to={"/"}>Main Page</Link>
       <Link to={"/about"}>About Page</Link>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route path={"/about"} element={<AboutPage />} />
-          <Route path={"/"} element={<MainPage />} />
-        </Routes>
-      </Suspense>
+      <AppRouter />
     </div>
   );
 }
